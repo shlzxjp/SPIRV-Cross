@@ -2957,7 +2957,7 @@ void CompilerHLSL::emit_push_constant_block(const SPIRVariable &var)
 
 string CompilerHLSL::to_sampler_expression(uint32_t id)
 {
-	auto expr = join("_", to_non_uniform_aware_expression(id));
+	auto expr = to_non_uniform_aware_expression(id);
 	auto index = expr.find_first_of('[');
 	if (index == string::npos)
 	{
