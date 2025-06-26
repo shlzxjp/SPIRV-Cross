@@ -577,6 +577,12 @@ void CompilerReflection::emit_resources(const char *tag, const SmallVector<Resou
 		if (type.basetype == SPIRType::Struct)
 		{
 			json_stream->emit_json_key_value("type", "_" + std::to_string(res.base_type_id));
+			std::string block_var_name = ir.get_name(res.id);
+			if (block_var_name.empty())
+			{
+				block_var_name = "_" + std::to_string(res.id);
+			}
+			json_stream->emit_json_key_value("block_var_name", block_var_name);
 		}
 		else
 		{
